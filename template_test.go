@@ -1,7 +1,6 @@
 package golang_web
 
 import (
-	"embed"
 	"fmt"
 	"html/template"
 	"io"
@@ -72,9 +71,6 @@ func TestTemplateDirectory(t *testing.T) {
 	assert.Equal(t, expectedHTML, string(body), "They Shoul be equal")
 
 }
-
-//go:embed templates/*.gohtml
-var templates embed.FS
 
 func TemplateEmbed(writer http.ResponseWriter, request *http.Request) {
 	t := template.Must(template.ParseFS(templates, "templates/*.gohtml"))
